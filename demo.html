@@ -1,0 +1,105 @@
+<head>
+  <script src='bundle.js'></script>
+  <style>
+body {
+  width: 20em;
+  margin: 3em auto;
+  font-family: 'Georgia', serif;
+  background-color: #222;
+  color: #CCC;
+}
+h1 {
+  margin: 0.5em 0;
+  font-weight: normal;
+  color: #6F7486;
+}
+#box {
+  background-color: #444;
+  color: inherit;
+  font: inherit;
+  padding: 0.2em 0.5em;
+  border: 0;
+  width: calc(80% - 1em);
+}
+#go  {
+  display: inline-block;
+  text-align: center;
+  color: #FFF;
+  text-decoration: none;
+  font-weight: bold;
+  padding: 0.2em 1.2em;
+  width: calc(20% - 2.4);
+}
+#lst {
+  background-color: #333;
+  list-style-type: none;
+  margin: 0;
+  width: calc(80% - 1em);
+  padding: 0;
+}
+#lst li {
+  padding: 0.2em 0.5em;
+}
+#go, #lst li:hover {
+  background-color: #4D5264;
+  cursor: pointer;
+}
+@media only screen and (max-device-width: 480px) {
+  body {
+    width: inherit;
+    margin: 3em 1em;
+  }
+}
+  </style>
+</head>
+<body>
+  <center>
+    <h1>Octopi.js demo</h1>
+    <p>
+      Go ahead, type something and you will be led
+      to one of my repositories on Github.
+    </p>
+  </center>
+
+  <input id='box' type='text' autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"></input>
+  <a id='go' href='#'>Go!</a>
+  <ul id='lst'>
+  </ul>
+  <script>
+(function() {
+  var $ = document.querySelector.bind(document);
+  var box = $('#box');
+  var lst = $('#lst');
+  var oct = new Octopi([
+    'evee.js',
+    'graphlite',
+    'mailthon',
+    'octopi',
+    'scell',
+    'stateless.js',
+  ]);
+
+  var handler = evee.on(box, 'keyup', function() {
+    lst.innerHTML = '';
+    oct.get(box.value.toLowerCase()).sort().forEach(function(w) {
+      var child = document.createElement('li');
+      child.textContent = w;
+      lst.appendChild(child);
+    });
+  });
+
+  evee.on($('#go'), 'click', function(ev) {
+    window.location = 'https://github.com/eugene-eeo/' + box.value;
+    ev.preventDefault();
+  });
+
+  evee.delegate(lst, 'click', 'li', function(ev) {
+    var value = ev.target.textContent;
+    box.value = value;
+    handler();
+  });
+
+  handler();
+})();
+  </script>
+</body>
