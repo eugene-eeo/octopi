@@ -7,12 +7,13 @@ made with autocompletion and low memory consumption
 in mind.
 
 ```js
-var oct = Octopi(['bird', 'boy', 'bid']);
-oct.get('bi');  // => ['bird', 'bid']
+var oct = Octopi(['bird', 'boy']);
+oct.add('bid');
+oct.get('bi');   // => ['bird', 'bid']
 oct.next('b')
    .next('i')
-   .next('r')   // no need to check 'bir' again!
-   .words()     // => ['bird']
+   .next('r')    // no need to check 'bir' again!
+   .words()      // => ['bird']
 ```
 
 ### Installation

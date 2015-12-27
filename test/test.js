@@ -40,15 +40,12 @@ describe('Octopi.next', function() {
 
   describe('the new instance', function() {
     var m = o.next('bir');
-    assert(m instanceof Octopi);
 
     it('.words() returns the correct words', function() {
-      var m = o.next('bir');
       assert.deepEqual(m.words(), ['bir', 'bird']);
     });
 
     it('.get() is prefixed', function() {
-      var m = o.next('bir');
       assert.deepEqual(m.get('d'), ['bird']);
     });
   });
