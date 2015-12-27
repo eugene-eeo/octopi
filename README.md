@@ -2,14 +2,14 @@
 
 <img src='media/octopi.png' align='right'/>
 
-Micro (0.55kB) trie based suggestions library,
+Micro (0.5kB) trie based suggestions library,
 made with autocompletion and low memory consumption
 in mind.
 
 ```js
 var oct = Octopi(['bird', 'boy']);
-oct.add('bid');
-oct.get('bi');   // => ['bird', 'bid']
+oct.add('bid', {'word': 'BID'});
+oct.get('bi');   // => ['bird', {'word':'BID'}]
 oct.next('b')
    .next('i')
    .next('r')    // no need to check 'bir' again!

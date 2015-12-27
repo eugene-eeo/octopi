@@ -6,13 +6,13 @@ Octopi = function(words) {
 };
 
 Octopi.prototype = {
-  add: function(word) {
+  add: function(word, data) {
     var sub = this.tree;
     for (var i = 0; i < word.length; i++) {
       var c = word[i];
       sub = sub[c] || (sub[c] = {});
     }
-    sub.$$ = word;
+    sub.$$ = data || word;
   },
 
   words: function() {
