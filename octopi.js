@@ -3,9 +3,8 @@ Octopi = function(words) {
     return new Octopi(words);
   this.tree = {};
   words = words || [];
-  for (var i = 0; i < words.length; i++) {
+  for (var i = 0; i < words.length; i++)
     this.add(words[i]);
-  }
 };
 
 Octopi.prototype = {

@@ -11,8 +11,7 @@ Octopi.prototype.delete = function(word) {
   delete sub.$$;
 
   for (var i = (length + 1); i--;) {
-    var tree = parts[i];
-    if ('$$' in tree) break;
-    if (i)            delete parts[i-1][word[i-1]];
+    if ('$$' in parts[i]) break;
+    if (i)                delete parts[i-1][word[i-1]];
   }
 };
