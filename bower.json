@@ -21,6 +21,6 @@
   ],
   "devDependencies": {
     "mocha": "~2.3.4",
-    "assert.js": "eugene-eeo/assert.js#~0.1.1"
+    "chai": "~3.4.2"
   }
 }
