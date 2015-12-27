@@ -27,8 +27,8 @@ describe('Octopi.get', function() {
     assert.deepEqual(s3, ['ata']);
   });
 
-  it('returns undefined if there are no words', function() {
-    assert.notOk(o.get('c'));
+  it('returns an empty array if there are no matches', function() {
+    assert.deepEqual(o.get('c'), []);
   });
 });
 
@@ -53,8 +53,8 @@ describe('Octopi.next', function() {
     });
   });
 
-  it('returns undefined if there are no words', function() {
+  it('returns a new instance even if there are no words', function() {
     var m = o.next('c');
-    assert.notOk(m);
+    assert(m instanceof Octopi);
   });
 });

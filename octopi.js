@@ -39,9 +39,9 @@ Octopi.prototype = {
     var sub = this.tree;
     for (var i = 0; i < word.length; i++)
       if (sub = sub[word[i]], !sub)
-        return;
+        break;
     var oct = new Octopi();
-    oct.tree = sub;
+    oct.tree = sub || {};
     return oct;
   }
 };
