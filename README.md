@@ -2,9 +2,9 @@
 
 <img src='media/octopi.png' align='right'/>
 
-Micro (0.5kB) trie based suggestions library,
-made with autocompletion and low memory consumption
-in mind.
+Micro (0.5kB) trie based suggestions microlibrary,
+made with autocompletion, control, and low memory
+consumption in mind.
 
 ```js
 var oct = Octopi(['bird', 'boy']);
@@ -14,6 +14,18 @@ oct.next('b')
    .next('i')
    .next('r')    // no need to check 'bir' again!
    .words()      // => ['bird']
+```
+
+### Do you even normalise?
+
+Octopi allows for arbitrary data to be associated
+with words added to the tree. This means that you
+have full control over normalisation of the words.
+For example:
+
+```js
+oct.add(word.toLowerCase(), 'abc');
+oct.get(word.toLowerCase())
 ```
 
 ### Installation
