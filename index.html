@@ -1,73 +1,82 @@
-<!doctype html>
 <html>
-  <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="chrome=1">
-    <title>Octopi by eugene-eeo</title>
+<head>
+  <title>octopi.js</title>
+  <meta charset='utf8'/>
+  <meta name=viewport content="width=device-width, initial-scale=1"/>
+  <style>
+body {
+  background-color: #222;
+  width: 24em;
+  font-size: 20px;
+  font-family: Georgia, serif;
+  margin: 3em auto;
+  text-align: center;
+  color: #CCC;
+}
+h1 {
+  margin: 0 0.5em;
+  font-weight: normal;
+  color: #6F7486;
+}
+pre {
+  overflow: auto;
+  padding: 0.5em;
+  font-family: 'Consolas', monospace;
+  background-color: #444;
+}
+img {
+  display: block;
+  margin: 0em auto;
+}
+footer {
+  font-size: 0.8em;
+  color: #555;
+}
+a {
+  color: #FFF;
+  font-weight: bold;
+  display: inline-block;
+  background-color: #6F7486;
+  padding: 0.4em;
+  text-decoration: none;
+  min-width: 6em;
+  margin: 0.6em 0;
+}
+a:hover {
+  background-color: #4D5264;
+}
+@media only screen and (max-device-width: 480px) {
+  body {
+    width: inherit;
+    font-size: 18px;
+    margin: 1.5em 1em;
+  }
+  #links {
+    margin: 1.5em auto;
+  }
+  a {
+    display: block;
+    width: calc(100% - 5em);
+    margin: 0.5em auto;
+  }
+}
+  </style>
+</head>
+<body>
+  <img src='octopi.png' width='200'/>
+  <h1>octopi.js</h1>
+  <p>
+    Super tiny (0.5kB minified) suggestion library.
+    Made with autocomplete, control, and a low memory footprint in mind.
+  </p>
+  <pre>Octopi(words).get(query)</pre>
 
-    <link rel="stylesheet" href="stylesheets/styles.css">
-    <link rel="stylesheet" href="stylesheets/github-light.css">
-    <meta name="viewport" content="width=device-width">
-    <!--[if lt IE 9]>
-    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
-    <![endif]-->
-  </head>
-  <body>
-    <div class="wrapper">
-      <header>
-        <h1>Octopi</h1>
-        <p>trie based suggestions microlibrary</p>
-
-        <p class="view"><a href="https://github.com/eugene-eeo/octopi">View the Project on GitHub <small>eugene-eeo/octopi</small></a></p>
-
-
-        <ul>
-          <li><a href="https://github.com/eugene-eeo/octopi/zipball/master">Download <strong>ZIP File</strong></a></li>
-          <li><a href="https://github.com/eugene-eeo/octopi/tarball/master">Download <strong>TAR Ball</strong></a></li>
-          <li><a href="https://github.com/eugene-eeo/octopi">View On <strong>GitHub</strong></a></li>
-        </ul>
-      </header>
-      <section>
-        <h1>
-<a id="octopijs" class="anchor" href="#octopijs" aria-hidden="true"><span class="octicon octicon-link"></span></a>octopi.js</h1>
-
-<p><img src="media/octopi.png" align="right"></p>
-
-<p>Micro (0.5kB) trie based suggestions microlibrary,
-made with autocompletion, control, and low memory
-consumption in mind.</p>
-
-<div class="highlight highlight-source-js"><pre><span class="pl-k">var</span> oct <span class="pl-k">=</span> <span class="pl-en">Octopi</span>([<span class="pl-s"><span class="pl-pds">'</span>bird<span class="pl-pds">'</span></span>, <span class="pl-s"><span class="pl-pds">'</span>boy<span class="pl-pds">'</span></span>]);
-<span class="pl-smi">oct</span>.<span class="pl-c1">add</span>(<span class="pl-s"><span class="pl-pds">'</span>bid<span class="pl-pds">'</span></span>, {<span class="pl-s"><span class="pl-pds">'</span>word<span class="pl-pds">'</span></span><span class="pl-k">:</span> <span class="pl-s"><span class="pl-pds">'</span>BID<span class="pl-pds">'</span></span>});
-<span class="pl-smi">oct</span>.<span class="pl-en">get</span>(<span class="pl-s"><span class="pl-pds">'</span>bi<span class="pl-pds">'</span></span>);   <span class="pl-c">// =&gt; ['bird', {'word':'BID'}]</span>
-<span class="pl-smi">oct</span>.<span class="pl-c1">next</span>(<span class="pl-s"><span class="pl-pds">'</span>b<span class="pl-pds">'</span></span>)
-   .<span class="pl-c1">next</span>(<span class="pl-s"><span class="pl-pds">'</span>i<span class="pl-pds">'</span></span>)
-   .<span class="pl-c1">next</span>(<span class="pl-s"><span class="pl-pds">'</span>r<span class="pl-pds">'</span></span>)    <span class="pl-c">// no need to check 'bir' again!</span>
-   .<span class="pl-en">words</span>()      <span class="pl-c">// =&gt; ['bird']</span></pre></div>
-
-<h3>
-<a id="do-you-even-normalise" class="anchor" href="#do-you-even-normalise" aria-hidden="true"><span class="octicon octicon-link"></span></a>Do you even normalise?</h3>
-
-<p>Octopi allows for arbitrary data to be associated
-with words added to the tree. This means that you
-have full control over normalisation of the words.
-For example:</p>
-
-<div class="highlight highlight-source-js"><pre>word <span class="pl-k">=</span> <span class="pl-s"><span class="pl-pds">'</span>CoolUseRName<span class="pl-pds">'</span></span>;
-<span class="pl-smi">oct</span>.<span class="pl-c1">add</span>(<span class="pl-smi">word</span>.<span class="pl-c1">toLowerCase</span>(), word);
-<span class="pl-smi">oct</span>.<span class="pl-en">get</span>(<span class="pl-smi">word</span>.<span class="pl-c1">toLowerCase</span>());</pre></div>
-
-<h3>
-<a id="installation" class="anchor" href="#installation" aria-hidden="true"><span class="octicon octicon-link"></span></a>Installation</h3>
-
-<div class="highlight highlight-source-shell"><pre>$ bower install eugenee-eeo/octopi</pre></div>
-      </section>
-      <footer>
-        <p>This project is maintained by <a href="https://github.com/eugene-eeo">eugene-eeo</a></p>
-        <p><small>Hosted on GitHub Pages &mdash; Theme by <a href="https://github.com/orderedlist">orderedlist</a></small></p>
-      </footer>
-    </div>
-    <script src="javascripts/scale.fix.js"></script>
-    
-  </body>
+  <div class='links'>
+    <a href='https://github.com/eugene-eeo/octopi'>Github</a>
+    <a href='https://github.com/eugene-eeo/octopi/releases/latest'>Download</a>
+  </div>
+  <footer>
+    Made with ♥ by Eeo Jun
+  </footer>
+</body>
 </html>
