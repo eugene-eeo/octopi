@@ -1,0 +1,25 @@
+{
+  "name": "octopi",
+  "main": "octopi.js",
+  "authors": [
+    "Eeo Jun <packwolf58@gmail.com>"
+  ],
+  "description": "micro client-side suggestions library",
+  "moduleType": [],
+  "keywords": [
+    "trie"
+  ],
+  "license": "MIT",
+  "homepage": "github.com/eugene-eeo/octopi",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "devDependencies": {
+    "mocha": "~2.3.4",
+    "assert.js": "eugene-eeo/assert.js#~0.1.1"
+  }
+}

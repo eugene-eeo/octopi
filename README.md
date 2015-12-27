@@ -1,6 +1,6 @@
 # octopi.js
 
-Fast and pluggable trie based suggestions library,
+Micro (0.55kB) trie based suggestions library,
 made with autocompletion and memory friendliness
 in mind.
 
