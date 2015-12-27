@@ -11,14 +11,21 @@ Octopi.prototype = {
     for (var i = 0; i < word.length; i++) {
       var c = word[i];
       sub = sub[c] || (sub[c] = {});
-      sub.$$
-        ? sub.$$.push(word)
-        : (sub.$$ = [word]);
     }
+    sub.$$ = word;
   },
 
   words: function() {
-    return this.tree.$$;
+    return (function search(subtree) {
+      var a = [];
+      for (var c in subtree) {
+        var t = subtree[c];
+        c == '$$'
+          ? a.push(t)
+          : (a = a.concat(search(t)));
+      }
+      return a;
+    })(this.tree);
   },
 
   get: function(word) {
@@ -28,11 +35,9 @@ Octopi.prototype = {
 
   next: function(word) {
     var sub = this.tree;
-    for (var i = 0; i < word.length; i++) {
-      var c = word[i];
-      sub = sub[c];
-      if (!sub) return;
-    }
+    for (var i = 0; i < word.length; i++)
+      if (sub = sub[word[i]], !sub)
+        return;
     var oct = new Octopi();
     oct.tree = sub;
     return oct;
