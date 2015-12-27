@@ -2,7 +2,7 @@ Octopi = function(words) {
   if (!(this instanceof Octopi))
     return new Octopi(words);
   this.tree = {};
-  (words || []).forEach(this.add);
+  (words || []).forEach(this.add.bind(this));
 };
 
 Octopi.prototype = {
@@ -16,16 +16,18 @@ Octopi.prototype = {
   },
 
   words: function() {
-    return (function search(subtree) {
-      var a = [];
-      for (var c in subtree) {
-        var t = subtree[c];
+    var queue = [this.tree];
+    var words = [];
+    while (queue.length) {
+      var t = queue.shift();
+      for (var c in t) {
+        var w = t[c];
         c == '$$'
-          ? a.push(t)
-          : (a = a.concat(search(t)));
+          ? words.push(w)
+          : queue.push(w);
       }
-      return a;
-    })(this.tree);
+    }
+    return words;
   },
 
   get: function(word) {
