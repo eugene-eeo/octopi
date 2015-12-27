@@ -31,8 +31,7 @@ Octopi.prototype = {
   },
 
   get: function(word) {
-    var sub = this.next(word);
-    return sub && sub.words();
+    return this.next(word).words();
   },
 
   next: function(word) {
