@@ -24,8 +24,9 @@ have full control over normalisation of the words.
 For example:
 
 ```js
-oct.add(word.toLowerCase(), 'abc');
-oct.get(word.toLowerCase())
+word = 'CoolUseRName';
+oct.add(word.toLowerCase(), word);
+oct.get(word.toLowerCase());
 ```
 
 ### Installation
