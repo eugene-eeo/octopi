@@ -3,7 +3,7 @@
 <img src='media/octopi.png' align='right'/>
 
 Micro (0.55kB) trie based suggestions library,
-made with autocompletion and memory friendliness
+made with autocompletion and low memory consumption
 in mind.
 
 ```js
