@@ -2,7 +2,10 @@ Octopi = function(words) {
   if (!(this instanceof Octopi))
     return new Octopi(words);
   this.tree = {};
-  (words || []).forEach(this.add.bind(this));
+  words = words || [];
+  for (var i = 0; i < words.length; i++) {
+    this.add(words[i]);
+  }
 };
 
 Octopi.prototype = {

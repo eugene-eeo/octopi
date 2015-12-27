@@ -1,5 +1,12 @@
 var assert = chai.assert;
 
+describe('Octopi(words)', function() {
+  it('indexes the words', function() {
+    var o = new Octopi(['bi', 'bir', 'bird']);
+    assert.deepEqual(o.get('b'), ['bi', 'bir', 'bird']);
+  });
+});
+
 describe('Octopi.add', function() {
   it('allows arbitrary data to be added', function() {
     var o = new Octopi();
