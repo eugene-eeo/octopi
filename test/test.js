@@ -7,6 +7,13 @@ describe('Octopi(words)', function() {
   });
 });
 
+describe('Octopi constructor', function() {
+  it('returns the constructor function', function() {
+    var o = new Octopi();
+    assert.deepEqual(o.constructor, Octopi);
+  });
+});
+
 describe('Octopi.add', function() {
   it('allows arbitrary data to be added', function() {
     var o = new Octopi();
