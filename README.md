@@ -2,18 +2,14 @@
 
 <img src='media/octopi.png' align='right'/>
 
-Micro (0.5kB) trie based suggestions microlibrary,
-made with autocompletion, control, and low memory
-consumption in mind.
+Micro (0.5kB) trie based suggestion generating
+library, made with autocompletion, control, and
+a low memory footprint in mind.
 
 ```js
 var oct = Octopi(['bird', 'boy']);
 oct.add('bid', {'word': 'BID'});
 oct.get('bi');   // => ['bird', {'word':'BID'}]
-oct.next('b')
-   .next('i')
-   .next('r')    // no need to check 'bir' again!
-   .words()      // => ['bird']
 ```
 
 ### Do you even normalise?
