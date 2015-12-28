@@ -24,11 +24,13 @@ Octopi.prototype = {
 
   get: function(key) {
     var sub = this.tree;
+    var tbl = this.table;
     for (var i = 0; i < key.length; i++)
       if (!(sub = sub[key[i]]))
         return [];
+
     return sub.$$.map(function(id) {
-      return this.table[id];
-    }.bind(this));
+      return tbl[id];
+    });
   }
 };
