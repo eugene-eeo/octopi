@@ -4,7 +4,8 @@
 
 Micro (0.5kB) trie based suggestion generating
 library, made with autocompletion, control, and
-a low memory footprint in mind.
+a low memory footprint in mind. Check out the
+[demo](https://eugene-eeo.github.io/octopi/demo.html).
 
 ```js
 var oct = Octopi(['bird', 'boy']);
