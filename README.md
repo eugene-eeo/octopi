@@ -26,6 +26,14 @@ oct.add(word.toLowerCase(), word);
 oct.get(word.toLowerCase());
 ```
 
+### Deleting entries
+
+You can use the [delete](plugins/delete.js) plugin:
+
+```js
+oct.delete('bid');
+```
+
 ### Installation
 
 ```sh
