@@ -8,6 +8,7 @@ Octopi = function(words) {
 };
 
 Octopi.prototype = {
+  constructor: Octopi,
   add: function(key, data) {
     var id = ++this.uid;
     var sub = this.tree;

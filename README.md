@@ -8,7 +8,7 @@ a low memory footprint in mind. Check out the
 [demo](https://eugene-eeo.github.io/octopi/demo.html).
 
 ```js
-var oct = Octopi(['bird', 'boy']);
+var oct = new Octopi(['bird', 'boy']);
 oct.add('bid', {'word': 'BID'});
 oct.get('bi');   // => ['bird', {'word':'BID'}]
 ```
