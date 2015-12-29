@@ -37,6 +37,11 @@ describe('Octopi.get', function() {
     assert.deepEqual(s3, ['ata']);
   });
 
+  it('returns the words in the order they were added', function() {
+    var s = o.get('');
+    assert.deepEqual(s, ['bird', 'bid', 'ata']);
+  });
+
   it('returns an empty array if there are no matches', function() {
     assert.deepEqual(o.get('c'), []);
   });
