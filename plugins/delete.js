@@ -19,9 +19,8 @@ Octopi.prototype.delete = function(key) {
 
   for (var i = ids.length; i--;) {
     var id = ids[i];
-    if (~arr.indexOf(id))
-      continue;
-    break;
+    if (!~arr.indexOf(id))
+      break;
   }
 
   for (var i = length + 1; i--;) {
