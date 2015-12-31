@@ -15,7 +15,7 @@ Octopi.prototype.delete = function(key) {
   var arr = [];
   for (var i in sub)
     if (i !== '$$')
-      arr = arr.concat(sub[i].$$)
+      arr = arr.concat(sub[i].$$);
 
   for (var i = ids.length; i--;) {
     var id = ids[i];
