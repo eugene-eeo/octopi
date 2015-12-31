@@ -14,4 +14,10 @@ describe('Octopi.delete', function() {
   it('compacts the tree', function() {
     assert.notOk('d' in oct.tree['b']['i']);
   });
+
+  it("isn't order dependent", function() {
+    var oct = new Octopi(['bi', 'b']);
+    oct.delete('b');
+    assert.deepEqual(oct.get('b'), ['bi']);
+  });
 });
