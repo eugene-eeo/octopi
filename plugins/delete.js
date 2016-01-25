@@ -4,25 +4,23 @@ Octopi.prototype.delete = function(key) {
   var length = key.length;
 
   for (var i = 0; i < length; i++) {
-    sub = sub[key[i]];
-    if (!sub)
+    if (!(sub = sub[key[i]]))
       return;
     trees.push(sub);
   }
 
   var toDelete = sub.$$;
-  var toDeleteLength = toDelete.length;
 
-  for (var i = length + 1; i--;) {
-    var ids = trees[i].$$;
-    for (var j=toDeleteLength; j--;) {
-      ids.splice(ids.indexOf(ids[j]), 1);
+  for (var i = toDelete.length; i--;) {
+    var id = toDelete[i];
+
+    for (var j = trees.length; j--;) {
+      var ids = trees[j].$$;
+      ids.splice(ids.indexOf(id), 1);
+      if (j && !ids.length)
+        delete trees[j-1][key[j-1]];
     }
-    if (i && !ids.length)
-      delete trees[i-1][key[i-1]]
-  }
 
-  for (var i = toDeleteLength; i--;) {
-    delete this.table[toDelete[i]];
+    delete this.table[id];
   }
 };
