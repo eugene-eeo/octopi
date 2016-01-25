@@ -11,17 +11,18 @@ Octopi.prototype.delete = function(key) {
   }
 
   var toDelete = sub.$$;
+  var toDeleteLength = toDelete.length;
 
-  for (var i = toDelete.length; i--;) {
-    var id = toDelete[i];
-
-    for (var j = length + 1; j--;) {
-      var ids = trees[j].$$;
-      ids.splice(ids.indexOf(id), 1);
-      if (j && !ids.length)
-        delete trees[j-1][key[j-1]]
+  for (var i = length + 1; i--;) {
+    var ids = trees[i].$$;
+    for (var j=toDeleteLength; j--;) {
+      ids.splice(ids.indexOf(ids[j]), 1);
     }
+    if (i && !ids.length)
+      delete trees[i-1][key[i-1]]
+  }
 
-    delete this.table[id];
+  for (var i = toDeleteLength; i--;) {
+    delete this.table[toDelete[i]];
   }
 };
