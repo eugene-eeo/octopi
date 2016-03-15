@@ -1,7 +1,7 @@
 describe('Octopi.delete', function() {
   var oct = new Octopi(['bid', 'bi', 'b']);
 
-  it('deletes the entry from the table', function() {
+  it('deletes the entries from the table', function() {
     oct.delete('bi');
     for (var i in this.table)
       assert.notOk(/bi/.test(this.table[i]));
