@@ -10,7 +10,7 @@ Octopi = function(words) {
 Octopi.prototype = {
   constructor: Octopi,
   /**
-     * Add data to the trie
+     * Add a new element to the trie
      * @param key String prefix to look up
      * @param data Object returned by trie
      */
