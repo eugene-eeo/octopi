@@ -7,9 +7,26 @@ Octopi = function(words) {
     this.add(words[i]);
 };
 
+/**
+* Take serialized Octopi data as string and initialize the Octopi object
+* @param json String The serialized Octopi trie
+*/
+Octopi.load = function(json){
+    var oct = new Octopi();
+    var o = JSON.parse(json);
+    oct.uid = o.uid;
+    oct.tree = o.tree;
+    oct.table = o.table;
+    return oct;
+  }
+
 Octopi.prototype = {
   constructor: Octopi,
-
+  /**
+     * Add a new element to the trie
+     * @param key String prefix to look up
+     * @param data Object returned by trie
+     */
   add: function(key, data) {
     var id = ++this.uid;
     var sub = this.tree;
@@ -24,6 +41,10 @@ Octopi.prototype = {
     }
   },
 
+  /**
+     * Return the list of elements in the trie for a given query
+     * @param key String The prefix to lookup
+     */
   get: function(key) {
     var sub = this.tree;
     var tbl = this.table;
@@ -34,5 +55,18 @@ Octopi.prototype = {
     return sub.$$.map(function(id) {
       return tbl[id];
     });
+  },
+  /**
+     * Serialize the Octopi trie as string
+     *
+     * @return String
+     */
+  serialize: function(){
+    var o = { uid: this.uid, 
+              tree: this.tree,
+              table: this.table
+            }
+    return JSON.stringify(o);
+
   }
 };
